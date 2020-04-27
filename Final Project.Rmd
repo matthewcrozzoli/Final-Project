@@ -1,0 +1,740 @@
+---
+title: "Final Project"
+author: "Matthew Crozzoli"
+date: "03/10/2020"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+```{r, setup, include=FALSE}
+library(mosaic)
+library(data.table)
+library(keyplayer)
+library(rgr)
+library(statnet)
+```
+
+
+```{r}
+season.1<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/1-Table 1.csv")
+season.2<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/2-Table 1.csv")
+season.3<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/3-Table 1.csv")
+season.4<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/4-Table 1.csv")
+season.5<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/5-Table 1.csv")
+season.6<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/6-Table 1.csv")
+season.7<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/7-Table 1.csv")
+season.8<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/8-Table 1.csv")
+season.9<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/9-Table 1.csv")
+season.10<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/10-Table 1.csv")
+season.11<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/11-Table 1.csv")
+season.12<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/12-Table 1.csv")
+season.13<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/13-Table 1.csv")
+season.14<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/14-Table 1.csv")
+season.15<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/15-Table 1.csv")
+season.16<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/16-Table 1.csv")
+season.17<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/17-Table 1.csv")
+season.18<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/18-Table 1.csv")
+season.19<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/19-Table 1.csv")
+season.20<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/20-Table 1.csv")
+season.21<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/21-Table 1.csv")
+season.22<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/22-Table 1.csv")
+season.23<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/23-Table 1.csv")
+season.24<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/24-Table 1.csv")
+season.25<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/25-Table 1.csv")
+season.26<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/26-Table 1.csv")
+season.27<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/27-Table 1.csv")
+season.28<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/28-Table 1.csv")
+season.29<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/29-Table 1.csv")
+season.30<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/30-Table 1.csv")
+season.31<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/31-Table 1.csv")
+season.32<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/32-Table 1.csv")
+season.33<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/33-Table 1.csv")
+season.34<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/34-Table 1.csv")
+season.35<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/35-Table 1.csv")
+season.36<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/36-Table 1.csv")
+```
+
+
+```{r}
+plot(Total~Place, data = season.1, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 1")
+plot(Total~Place, data = season.2, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 2")
+plot(Total~Place, data = season.3, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 3")
+plot(Total~Place, data = season.4, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 4")
+plot(Total~Place, data = season.5, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 5")
+plot(Total~Place, data = season.6, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 6")
+plot(Total~Place, data = season.7, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 7")
+plot(Total~Place, data = season.8, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 8")
+plot(Total~Place, data = season.9, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 9")
+plot(Total~Place, data = season.10, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 10")
+plot(Total~Place, data = season.11, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 11")
+plot(Total~Place, data = season.12, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 12")
+plot(Total~Place, data = season.13, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 13")
+plot(Total~Place, data = season.14, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 14")
+plot(Total~Place, data = season.15, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 15")
+plot(Total~Place, data = season.16, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 16")
+plot(Total~Place, data = season.17, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 17")
+plot(Total~Place, data = season.18, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 18")
+plot(Total~Place, data = season.19, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 19")
+plot(Total~Place, data = season.20, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 20")
+plot(Total~Place, data = season.21, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 21")
+plot(Total~Place, data = season.22, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 22")
+plot(Total~Place, data = season.23, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 23")
+plot(Total~Place, data = season.24, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 24")
+plot(Total~Place, data = season.25, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 25")
+plot(Total~Place, data = season.26, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 26")
+plot(Total~Place, data = season.27, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 27")
+plot(Total~Place, data = season.28, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 28")
+plot(Total~Place, data = season.29, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 29")
+plot(Total~Place, data = season.30, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 30")
+plot(Total~Place, data = season.31, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 31")
+plot(Total~Place, data = season.32, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 32")
+plot(Total~Place, data = season.33, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 33")
+plot(Total~Place, data = season.34, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 34")
+plot(Total~Place, data = season.35, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 35")
+plot(Total~Place, data = season.36, xlab = "Place Finished", ylab = "Total Number of Confessionals", main = "Season 36")
+
+```
+
+```{r}
+#randomization test for Ho: rho=.00
+obsr=cor(season.1$Place,season.1$Total,method="s")  
+N=1000
+r=numeric(N) 
+for (i in 1:N) {
+  x <- sample(season.1$Place,16,replace=F)
+  y <- sample(season.1$Total,16,replace=F)
+  r[i] <- cor(x,y,method="s")
+}
+hist(r, main="Probibility Distribution")  
+pvalue=length(which(r>=abs(obsr)))/N    #2-sided p value
+pvalue
+
+
+#randomization test for Ho: rho=.00
+obsr=cor(season.2$Place,season.2$Total,method="s")  
+N=1000
+r=numeric(N) 
+for (i in 1:N) {
+  x <- sample(season.2$Place,16,replace=F)
+  y <- sample(season.2$Total,16,replace=F)
+  r[i] <- cor(x,y,method="s")
+}
+hist(r, main="Probibility Distribution")  
+pvalue=length(which(r>=abs(obsr)))/N    #2-sided p value
+pvalue
+
+
+```
+
+
+```{r}
+season.1.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /1-Table 1.csv")
+season.2.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /2-Table 1.csv")
+season.3.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /3-Table 1.csv")
+season.4.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /4-Table 1.csv")
+season.5.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /5-Table 1.csv")
+season.6.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /6-Table 1.csv")
+season.7.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /7-Table 1.csv")
+season.8.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /8-Table 1.csv")
+season.9.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /9-Table 1.csv")
+season.10.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /10-Table 1.csv")
+season.11.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /11-Table 1.csv")
+season.12.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /12-Table 1.csv")
+season.13.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /13-Table 1.csv")
+season.14.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /14-Table 1.csv")
+season.15.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /15-Table 1.csv")
+season.16.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /16-Table 1.csv")
+season.17.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /17-Table 1.csv")
+season.18.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /18-Table 1.csv")
+season.19.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /19-Table 1.csv")
+season.20.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /20-Table 1.csv")
+season.21.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /21-Table 1.csv")
+season.22.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /22-Table 1.csv")
+season.23.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /23-Table 1.csv")
+season.24.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /24-Table 1.csv")
+season.25.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /25-Table 1.csv")
+season.26.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /26-Table 1.csv")
+season.27.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /27-Table 1.csv")
+season.28.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /28-Table 1.csv")
+season.29.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /29-Table 1.csv")
+season.30.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /30-Table 1.csv")
+season.31.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /31-Table 1.csv")
+season.32.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /32-Table 1.csv")
+season.33.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /33-Table 1.csv")
+season.34.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /34-Table 1.csv")
+season.35.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /35-Table 1.csv")
+season.36.mat<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/matrices /36-Table 1.csv")
+```
+
+
+```{r}
+t(season.1.mat) -> S1.adj.mat
+t(season.2.mat) -> S2.adj.mat
+t(season.3.mat) -> S3.adj.mat
+t(season.4.mat) -> S4.adj.mat
+t(season.5.mat) -> S5.adj.mat
+t(season.6.mat) -> S6.adj.mat
+t(season.7.mat) -> S7.adj.mat
+t(season.8.mat) -> S8.adj.mat
+t(season.9.mat) -> S9.adj.mat
+t(season.10.mat) -> S10.adj.mat
+t(season.11.mat) -> S11.adj.mat
+t(season.12.mat) -> S12.adj.mat
+t(season.13.mat) -> S13.adj.mat
+t(season.14.mat) -> S14.adj.mat
+t(season.15.mat) -> S15.adj.mat 
+t(season.16.mat) -> S16.adj.mat
+t(season.17.mat) -> S17.adj.mat
+t(season.18.mat) -> S18.adj.mat
+t(season.19.mat) -> S19.adj.mat
+t(season.20.mat) -> S20.adj.mat
+t(season.21.mat) -> S21.adj.mat
+t(season.22.mat) -> S22.adj.mat
+t(season.23.mat) -> S23.adj.mat
+t(season.24.mat) -> S24.adj.mat
+t(season.25.mat) -> S25.adj.mat
+t(season.26.mat) -> S26.adj.mat
+t(season.27.mat) -> S27.adj.mat
+t(season.28.mat) -> S28.adj.mat
+t(season.29.mat) -> S29.adj.mat
+t(season.30.mat) -> S30.adj.mat
+t(season.31.mat) -> S31.adj.mat
+t(season.32.mat) -> S32.adj.mat
+t(season.33.mat) -> S33.adj.mat
+t(season.34.mat) -> S34.adj.mat
+t(season.35.mat) -> S35.adj.mat
+t(season.36.mat) -> S36.adj.mat
+```
+
+
+
+#Correlation Tests between Full Seasons
+```{r}
+# Entire Season 1 and Entire Season 2
+array(dim = list(2,13,12))-> array1
+S1.adj.mat[2:14, 1:12]-> array1[1, , ]
+S2.adj.mat[2:14, 1:12]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 2 and Entire Season 3
+array(dim = list(2,14,16))-> array1
+S2.adj.mat[2:15, 1:16]-> array1[1, , ]
+S3.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 3 and Entire Season 4
+array(dim = list(2,14,16))-> array1
+S3.adj.mat[2:15, 1:16]-> array1[1, , ]
+S4.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 4 and Entire Season 5
+array(dim = list(2,14,16))-> array1
+S4.adj.mat[2:15, 1:16]-> array1[1, , ]
+S5.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 5 and Entire Season 6
+array(dim = list(2,14,16))-> array1
+S5.adj.mat[2:15, 1:16]-> array1[1, , ]
+S6.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 6 and Entire Season 7
+array(dim = list(2,14,16))-> array1
+S6.adj.mat[2:15, 1:16]-> array1[1, , ]
+S7.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 7 and Entire Season 8
+array(dim = list(2,14,16))-> array1
+S7.adj.mat[2:15, 1:16]-> array1[1, , ]
+S8.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 8 and Entire Season 9
+array(dim = list(2,14,16))-> array1
+S8.adj.mat[2:15, 1:16]-> array1[1, , ]
+S9.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 9 and Entire Season 10
+array(dim = list(2,14,16))-> array1
+S9.adj.mat[2:15, 1:16]-> array1[1, , ]
+S10.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 10 and Entire Season 11
+array(dim = list(2,14,16))-> array1
+S10.adj.mat[2:15, 1:16]-> array1[1, , ]
+S11.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 11 and Entire Season 12
+array(dim = list(2,14,16))-> array1
+S11.adj.mat[2:15, 1:16]-> array1[1, , ]
+S12.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 12 and Entire Season 13
+array(dim = list(2,14,16))-> array1
+S12.adj.mat[2:15, 1:16]-> array1[1, , ]
+S13.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 13 and Entire Season 14
+array(dim = list(2,14,16))-> array1
+S13.adj.mat[2:15, 1:16]-> array1[1, , ]
+S14.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 14 and Entire Season 15
+array(dim = list(2,13,16))-> array1
+S14.adj.mat[2:14, 1:16]-> array1[1, , ]
+S15.adj.mat[2:14, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 15 and Entire Season 16
+array(dim = list(2,13,16))-> array1
+S15.adj.mat[2:14, 1:16]-> array1[1, , ]
+S16.adj.mat[2:14, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 16 and Entire Season 17
+array(dim = list(2,12,16))-> array1
+S16.adj.mat[2:13, 1:16]-> array1[1, , ]
+S17.adj.mat[2:13, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 17 and Entire Season 18
+array(dim = list(2,12,16))-> array1
+S17.adj.mat[2:13, 1:16]-> array1[1, , ]
+S18.adj.mat[2:13, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 18 and Entire Season 19
+array(dim = list(2,13,16))-> array1
+S18.adj.mat[2:14, 1:16]-> array1[1, , ]
+S19.adj.mat[2:14, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 19 and Entire Season 20
+array(dim = list(2,14,16))-> array1
+S19.adj.mat[2:15, 1:16]-> array1[1, , ]
+S20.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 20 and Entire Season 21
+array(dim = list(2,14,16))-> array1
+S20.adj.mat[2:15, 1:16]-> array1[1, , ]
+S21.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 21 and Entire Season 22
+array(dim = list(2,14,16))-> array1
+S21.adj.mat[2:15, 1:16]-> array1[1, , ]
+S22.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 22 and Entire Season 23
+array(dim = list(2,14,16))-> array1
+S22.adj.mat[2:15, 1:16]-> array1[1, , ]
+S23.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 23 and Entire Season 24
+array(dim = list(2,14,16))-> array1
+S23.adj.mat[2:15, 1:16]-> array1[1, , ]
+S24.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 24 and Entire Season 25
+array(dim = list(2,14,16))-> array1
+S24.adj.mat[2:15, 1:16]-> array1[1, , ]
+S25.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 25 and Entire Season 26
+array(dim = list(2,14,16))-> array1
+S25.adj.mat[2:15, 1:16]-> array1[1, , ]
+S26.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 26 and Entire Season 27
+array(dim = list(2,14,16))-> array1
+S26.adj.mat[2:15, 1:16]-> array1[1, , ]
+S27.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 27 and Entire Season 28
+array(dim = list(2,14,16))-> array1
+S27.adj.mat[2:15, 1:16]-> array1[1, , ]
+S28.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 28 and Entire Season 29
+array(dim = list(2,14,16))-> array1
+S28.adj.mat[2:15, 1:16]-> array1[1, , ]
+S29.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 29 and Entire Season 30
+array(dim = list(2,14,16))-> array1
+S29.adj.mat[2:15, 1:16]-> array1[1, , ]
+S30.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 30 and Entire Season 31
+array(dim = list(2,14,16))-> array1
+S30.adj.mat[2:15, 1:16]-> array1[1, , ]
+S31.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 31 and Entire Season 32
+array(dim = list(2,14,16))-> array1
+S31.adj.mat[2:15, 1:16]-> array1[1, , ]
+S32.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 32 and Entire Season 33
+array(dim = list(2,14,16))-> array1
+S32.adj.mat[2:15, 1:16]-> array1[1, , ]
+S33.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 33 and Entire Season 34
+array(dim = list(2,14,16))-> array1
+S33.adj.mat[2:15, 1:16]-> array1[1, , ]
+S34.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 34 and Entire Season 35
+array(dim = list(2,14,16))-> array1
+S34.adj.mat[2:15, 1:16]-> array1[1, , ]
+S35.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# Entire Season 35 and Entire Season 36
+array(dim = list(2,14,16))-> array1
+S35.adj.mat[2:15, 1:16]-> array1[1, , ]
+S36.adj.mat[2:15, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+```
+
+#Correlation Tests between first three episodes of Seasons
+```{r}
+# First three episodes of Season 1 and Season 2
+array(dim = list(2,3,12))-> array1
+S1.adj.mat[2:4, 1:12]-> array1[1, , ]
+S2.adj.mat[2:4, 1:12]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 2 and Season 3
+array(dim = list(2,3,16))-> array1
+S2.adj.mat[2:4, 1:16]-> array1[1, , ]
+S3.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 3 and Season 4
+array(dim = list(2,3,16))-> array1
+S3.adj.mat[2:4, 1:16]-> array1[1, , ]
+S4.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 4 and Season 5
+array(dim = list(2,3,16))-> array1
+S4.adj.mat[2:4, 1:16]-> array1[1, , ]
+S5.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 5 and Season 6
+array(dim = list(2,3,16))-> array1
+S5.adj.mat[2:4, 1:16]-> array1[1, , ]
+S6.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 6 and Season 7
+array(dim = list(2,3,16))-> array1
+S6.adj.mat[2:4, 1:16]-> array1[1, , ]
+S7.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 7 and Season 8
+array(dim = list(2,3,16))-> array1
+S7.adj.mat[2:4, 1:16]-> array1[1, , ]
+S8.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 8 and Season 9
+array(dim = list(2,3,16))-> array1
+S8.adj.mat[2:4, 1:16]-> array1[1, , ]
+S9.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 9 and Season 10
+array(dim = list(2,3,16))-> array1
+S9.adj.mat[2:4, 1:16]-> array1[1, , ]
+S10.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 10 and Season 11
+array(dim = list(2,3,16))-> array1
+S10.adj.mat[2:4, 1:16]-> array1[1, , ]
+S11.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 11 and Season 12
+array(dim = list(2,3,16))-> array1
+S11.adj.mat[2:4, 1:16]-> array1[1, , ]
+S12.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 12 and Season 13
+array(dim = list(2,3,16))-> array1
+S12.adj.mat[2:4, 1:16]-> array1[1, , ]
+S13.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 13 and Season 14
+array(dim = list(2,3,16))-> array1
+S13.adj.mat[2:4, 1:16]-> array1[1, , ]
+S14.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 14 and Season 15
+array(dim = list(2,3,16))-> array1
+S14.adj.mat[2:4, 1:16]-> array1[1, , ]
+S15.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 15 and Season 16
+array(dim = list(2,3,16))-> array1
+S15.adj.mat[2:4, 1:16]-> array1[1, , ]
+S16.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 16 and Season 17
+array(dim = list(2,3,16))-> array1
+S16.adj.mat[2:4, 1:16]-> array1[1, , ]
+S17.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 17 and Season 18
+array(dim = list(2,3,16))-> array1
+S17.adj.mat[2:4, 1:16]-> array1[1, , ]
+S18.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 18 and Season 19
+array(dim = list(2,3,16))-> array1
+S18.adj.mat[2:4, 1:16]-> array1[1, , ]
+S19.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 19 and Season 20
+array(dim = list(2,3,16))-> array1
+S19.adj.mat[2:4, 1:16]-> array1[1, , ]
+S20.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 20 and Season 21
+array(dim = list(2,3,16))-> array1
+S20.adj.mat[2:4, 1:16]-> array1[1, , ]
+S21.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 21 and Season 22
+array(dim = list(2,3,16))-> array1
+S21.adj.mat[2:4, 1:16]-> array1[1, , ]
+S22.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 22 and Season 23
+array(dim = list(2,3,16))-> array1
+S22.adj.mat[2:4, 1:16]-> array1[1, , ]
+S23.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 23 and Season 24
+array(dim = list(2,3,16))-> array1
+S23.adj.mat[2:4, 1:16]-> array1[1, , ]
+S24.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 24 and Season 25
+array(dim = list(2,3,16))-> array1
+S24.adj.mat[2:4, 1:16]-> array1[1, , ]
+S25.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 25 and Season 26
+array(dim = list(2,3,16))-> array1
+S25.adj.mat[2:4, 1:16]-> array1[1, , ]
+S26.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 26 and Season 27
+array(dim = list(2,3,16))-> array1
+S26.adj.mat[2:4, 1:16]-> array1[1, , ]
+S27.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 27 and Season 28
+array(dim = list(2,3,16))-> array1
+S27.adj.mat[2:4, 1:16]-> array1[1, , ]
+S28.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 28 and Season 29
+array(dim = list(2,3,16))-> array1
+S28.adj.mat[2:4, 1:16]-> array1[1, , ]
+S29.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 29 and Season 30
+array(dim = list(2,3,16))-> array1
+S29.adj.mat[2:4, 1:16]-> array1[1, , ]
+S30.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 30 and Season 31
+array(dim = list(2,3,16))-> array1
+S30.adj.mat[2:4, 1:16]-> array1[1, , ]
+S31.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 31 and Season 32
+array(dim = list(2,3,16))-> array1
+S31.adj.mat[2:4, 1:16]-> array1[1, , ]
+S32.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 32 and Season 33
+array(dim = list(2,3,16))-> array1
+S32.adj.mat[2:4, 1:16]-> array1[1, , ]
+S33.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 33 and Season 34
+array(dim = list(2,3,16))-> array1
+S33.adj.mat[2:4, 1:16]-> array1[1, , ]
+S34.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 34 and Season 35
+array(dim = list(2,3,16))-> array1
+S34.adj.mat[2:4, 1:16]-> array1[1, , ]
+S35.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+
+# First three episodes of Season 35 and Season 36
+array(dim = list(2,3,16))-> array1
+S35.adj.mat[2:4, 1:16]-> array1[1, , ]
+S36.adj.mat[2:4, 1:16]-> array1[2, , ]
+gcor(array1, g1=1, g2=2)
+```
+
+
+
+```{r}
+
+total.mat<- 
+  S1.adj.mat[2:13, 1:16]+
+  S2.adj.mat[2:13, 1:16]+
+  S3.adj.mat[2:13, 1:16]+
+  S4.adj.mat[2:13, 1:16]+
+  S5.adj.mat[2:13, 1:16]+
+  S6.adj.mat[2:13, 1:16]+
+  S7.adj.mat[2:13, 1:16]+
+  S8.adj.mat[2:13, 1:16]+
+  S9.adj.mat[2:13, 1:16]+
+  S10.adj.mat[2:13, 1:16]+
+  S11.adj.mat[2:13, 1:16]+
+  S12.adj.mat[2:13, 1:16]+
+  S13.adj.mat[2:13, 1:16]+
+  S14.adj.mat[2:13, 1:16]+
+  S15.adj.mat[2:13, 1:16]+
+  S16.adj.mat[2:13, 1:16]+
+  S17.adj.mat[2:13, 1:16]+
+  S18.adj.mat[2:13, 1:16]+
+  S19.adj.mat[2:13, 1:16]+
+  S20.adj.mat[2:13, 1:16]+
+  S21.adj.mat[2:13, 1:16]+
+  S22.adj.mat[2:13, 1:16]+
+  S23.adj.mat[2:13, 1:16]+
+  S24.adj.mat[2:13, 1:16]+
+  S25.adj.mat[2:13, 1:16]+
+  S26.adj.mat[2:13, 1:16]+
+  S27.adj.mat[2:13, 1:16]+
+  S28.adj.mat[2:13, 1:16]+
+  S29.adj.mat[2:13, 1:16]+
+  S30.adj.mat[2:13, 1:16]+
+  S31.adj.mat[2:13, 1:16]+
+  S32.adj.mat[2:13, 1:16]+
+  S33.adj.mat[2:13, 1:16]+
+  S34.adj.mat[2:13, 1:16]+
+  S35.adj.mat[2:13, 1:16]+
+  S36.adj.mat[2:13, 1:16]
+
+View(total.mat)
+```
+
+
+Linear Model & Predictive Coefficients
+```{r}
+lm(Place~Average, dat=season.1)->S1.avg.mod
+predict(S1.avg.mod)
+S1.avg.mod$coefficients
+S1.avg.mod$coefficients[1] + S1.avg.mod$coefficients[2] * season.1$Average
+{plot(Place~Average, dat=season.1)
+abline(S1.avg.mod$coefficients[1], S1.avg.mod$coefficients[2])}
+anova(S1.avg.mod)
+
+
+lm(Place~Total, dat=season.1)->S1.tot.mod
+predict(S1.tot.mod)
+S1.tot.mod$coefficients
+S1.tot.mod$coefficients[1] + S1.tot.mod$coefficients[2] * season.1$Total
+{plot(Place~Total, dat=season.1)
+abline(S1.tot.mod$coefficients[1], S1.tot.mod$coefficients[2])}
+anova(S1.tot.mod)
+
+
+#First Three Episodes (Average Confessionals)
+((season.1[,2]+season.1[,3]+season.1[,4])/3) -> S1.avg.three.episodes
+
+lm(Place~S1.avg.three.episodes, dat=season.1)->S1.avg.three.mod
+predict(three.mod)
+S1.avg.three.mod$coefficients[1] + S1.avg.three.mod$coefficients[2] * season.1$S1.avg.three.episodes
+
+
+
+```
+
+
+Season 40 Predictions
+```{r}
+season.40<-read.csv(file="/Users/matthewcrozzoli/Desktop/spring 2020/stat 375/Project data/S40.csv")
+
+((season.40[,2]+season.40[,3]+season.40[,4]+season.40[,4]+season.40[,5]+season.40[,6]+season.40[,7]+season.40[,8]+season.40[,9]+season.40[,10]+season.40[,11])/10) -> total.episodes.avg
+lm(Castaway~total.episodes.avg, dat=season.40)->S40.avg.mod
+predict(S40.avg.mod)
+S40.avg.mod$coefficients
+{plot(as.numeric(Castaway)~total.episodes.avg, dat=season.40)
+abline(S40.avg.mod$coefficients[1], S40.avg.mod$coefficients[2])}
+
+#First Three Episodes (Average Confessionals)
+((season.40[,2]+season.40[,3]+season.40[,4])/3) -> S40.avg.three.episodes
+lm(Castaway~S40.avg.three.episodes, dat=season.40)->S40.avg.three.mod
+predict(S40.avg.three.mod)
+```
+
